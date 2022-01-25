@@ -16,3 +16,24 @@ JOIN "addresses"
 
 --(2) : Get all orders and their line items (orders, quantity and product).
 
+SELECT 
+	"line_items".quantity,
+	"line_items".order_id,
+	"line_items".product_id,
+	"orders".order_date,
+	"orders".address_id
+FROM "orders"
+JOIN "line_items"
+ON "orders".id= "line_items".order_id
+
+
+--(3) Which warehouses have cheetos?
+SELECT *
+FROM products
+JOIN warehouse_product
+ON "warehouse_product".product_id = "products".id
+JOIN warehouse
+ON "warehouse".id = "warehouse_product"."warehouse_id"
+WHERE description = 'cheetos'
+
+--(4) 
